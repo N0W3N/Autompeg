@@ -4,24 +4,25 @@ import os.path
 import subprocess
 import sys
 
-# choose a file extension the script should scan for and proceed with it
+# working dir and extenstion type will be passed through CLI
 
-workDir = sys.argv[0]
-exttype = sys.argv[1]
+workDir = sys.argv[1]
+extType = sys.argv[2]
+newExtType = sys.argv[3]
 
-# enter the path of the folder which includes the chosen file extension from above
-# if the path doesn't exist, it will display an error message
-
+# exception-clause to prevent a faulty workdir and ffmpeg process
 try:
-
     filesInWorkDir = os.listdir(workDir)  #cache all the existig files in the directory
+except IOError:
+    print("Filepath not found. Please check the location of your media file(s).\n")
+else:
     for file in filesInWorkDir:
-        if str(file).split('.')[-1] == exttype:  #scan for files with the extension given in 'exttype'
-            newFile = str(file).split('.' + exttype)[0] + '.mp4' #  replace the extension with a new one
+        if str(file).split('.')[-1] == extType:  #scan for files with the extension given in 'exttype'
+            newFile = str(file).split('.' + extType)[0] + '.mp4' #  replace the extension with 'newExtType'
             filepath = workDir + '\\' + file
             newfilepath = workDir + '\\' + newFile
 
+            # no need to include an exception-clause here yet, since ffmpeg automatically detects a faulty filepath
+
             subprocess.call(['E:\\ffmpeg\\ffmpeg.exe', '-i', filepath, '-c:v', 'copy', '-bsf:a', 'aac_adtstoasc',
                              newfilepath])
-except IOError:
-    print("Filepath not found.")
