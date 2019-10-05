@@ -19,12 +19,12 @@ else:
     for file in filesInWorkDir:
         if str(file).split('.')[-1] == extType:  # scan for files with the extension given in 'extType'
             newFile = str(file).split('.' + extType)[0] + '.mp4'  # replace the extension with 'newExtType'
-            filepath = workDir + '\\' + file
-            newfilepath = workDir + '\\' + newFile
+            filepath = workDir + '/' + file
+            newfilepath = workDir + '/' + newFile
 
             # no need to include an exception-clause here yet, since ffmpeg automatically detects a faulty filepath
 
-            subprocess.call(['E:\\ffmpeg\\ffmpeg.exe', '-i', filepath, '-c:v', 'copy', '-bsf:a', 'aac_adtstoasc',
+            subprocess.call(['/usr/bin/ffmpeg', '-i', filepath, '-c:v', 'copy', '-bsf:a', 'aac_adtstoasc',
                              newfilepath])
         else:
             print("No media found. Rerun the script and check the directory.")
