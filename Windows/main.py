@@ -4,13 +4,14 @@ import os.path
 import subprocess
 import sys
 
-# working dir and extension type will be passed through CLI
+# working dir and extension types will be passed through CLI
 
 workDir = sys.argv[1]
 extType = sys.argv[2]
 newExtType = sys.argv[3]
 
 # exception-clause to prevent a faulty WorkDir and ffmpeg process
+
 try:
     filesInWorkDir = os.listdir(workDir)  # cache all the existing files in the directory
 except IOError:
@@ -18,7 +19,7 @@ except IOError:
 else:
     for file in filesInWorkDir:
         if str(file).split('.')[-1] == extType:  # scan for files with the extension given in 'extType'
-            newFile = str(file).split('.' + extType)[0] + '.mp4'  # replace the extension with 'newExtType'
+            newFile = str(file).split('.' + extType)[0] + newExtType  # replace the extension with 'newExtType'
             filepath = workDir + '\\' + file
             newfilepath = workDir + '\\' + newFile
 
