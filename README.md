@@ -6,7 +6,7 @@ Since FFmpeg doesn't provide an official way to convert multiple files, Autompeg
 --------------------------------
 I made this script to get rid of the typing of the same arguments in FFmpeg again and again - especially when you need to convert hundreds of files.
 Also Autompeg helps me to identify and convert files in confusingly dictionaries and disks.
---------------------------------
+
 # Installation
 
 1) git clone https://github.com/N0W3N/auto-ffmpeg-ts.git (directory)
