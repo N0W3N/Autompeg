@@ -23,15 +23,15 @@ with your own ffmpeg path.
 --------------------------------
 # Usage
 
-`python main.py <WorkDir> <extType> <newExtType>`
+`python autompeg.py <WorkDir> <extType> <newExtType>`
 
 * WorkDir = your folderpath with the media
 * extType = the file format Autompeg should be looking for
 * newExtType = the file format Autompeg should use for its conversion
 
-e.g. `python main.py E:\Streams\ MOV MP4`
+e.g. `python autompeg.py E:\Streams\ MOV MP4`
 
-e.g  `python main.py E:\Music\ OGG MP3`
+e.g  `python autompeg.py E:\Music\ OGG MP3`
 
 * subprocess.call() takes all the arguments you'd type in your terminal/cmd to start ffmpeg
 
