@@ -7,7 +7,6 @@ from configparser import ConfigParser
 
 # working dir and extension types will be passed through CLI
 
-
 workDir = sys.argv[1]
 extType = sys.argv[2]
 newExtType = sys.argv[3]
@@ -35,15 +34,14 @@ except IOError:
 else:
     for file in filesInWorkDir:
         if str(file).split(".")[-1] == extType:  # scan for files with the extension given in 'extType'
-            newFile = str(file).split("." + extType)[0] + newExtType  # replace the extension with 'newExtType'
-            filepath = workDir + "\\" + file
-            newfilepath = workDir + "\\" + newFile
+            newFile = str(file).split(extType)[0] + newExtType  # replace the extension with 'newExtType'
+            filepath = workDir + "/" + file
+            newfilepath = workDir + "/" + newFile
 
             # no need to include an exception-clause here yet, since ffmpeg automatically detects a faulty filepath
 
             subprocess.call(
                 [
-
                     path,  # path of ffmpeg
                     "-i",  # input argument for file
                     filepath,  # file path of the 'old' media file
@@ -54,3 +52,4 @@ else:
                     newfilepath,  # file path of the 'new' media file
                 ]
             )
+

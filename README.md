@@ -9,17 +9,21 @@ Also Autompeg helps me to identify and convert files in confusingly dictionaries
 
 # Installation
 
-1) git clone https://github.com/N0W3N/auto-ffmpeg-ts.git (directory)
+1) git clone https://github.com/N0W3N/auto-ffmpeg-ts.git```
 
 or
 
 1) download and unzip the package to your preferred path
 
-2) Make sure to have the newest version of FFmpeg installed on your system - otherwise download it from https://ffmpeg.org/download.html
+2) make sure to have the newest version of FFmpeg installed on your system - otherwise download it from https://ffmpeg.org/download.html
 
-2) replace line 28 in main.py 
-* 'E:\\ffmpeg\\ffmpeg.exe'
-with your own ffmpeg path.
+3) run `install.py`
+
+4) enter the file path where ffmpeg is located 
+* please keep in my mind that Python handles file paths differently depending on the running OS.
+* Windows: e.g. `E:\\ffmpeg\\ffmpeg.exe`
+* Mac OSX: e.g. `/Users/ffmpeg/./ffmpeg`
+* Linux: e.g. (in work)
 --------------------------------
 # Usage
 
