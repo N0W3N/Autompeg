@@ -9,7 +9,7 @@ Also Autompeg helps me to identify and convert files in confusingly dictionaries
 
 # Installation
 
-1) git clone https://github.com/N0W3N/auto-ffmpeg-ts.git```
+1)`git clone https://github.com/N0W3N/Autompeg.git`
 
 or
 
