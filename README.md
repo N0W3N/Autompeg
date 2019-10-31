@@ -27,7 +27,7 @@ or
 --------------------------------
 # Usage
 
-`python main.py <WorkDir> <extType> <newExtType>`
+`python autompeg.py <WorkDir> <extType> <newExtType>`
 
 * WorkDir = your folderpath with the media
 * extType = the file format Autompeg should be looking for

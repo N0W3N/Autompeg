@@ -43,6 +43,7 @@ else:
 
             subprocess.call(
                 [
+
                     path,  # path of ffmpeg
                     "-i",  # input argument for file
                     filepath,  # file path of the 'old' media file
@@ -53,4 +54,3 @@ else:
                     newfilepath,  # file path of the 'new' media file
                 ]
             )
-
