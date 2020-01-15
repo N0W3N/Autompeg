@@ -18,7 +18,8 @@ config = ConfigParser(allow_no_value=True)
 
 try:
     with open('config.ini', 'r') as cfg:
-        config.readfp(cfg)
+        #config.readfp(cfg)
+        config.read_file(cfg)
         config.get('ffmpeg', 'path2')
         path = config.get('ffmpeg', 'path2')
 except IOError:
