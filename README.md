@@ -1,11 +1,19 @@
 Autompeg - ffmpeg automation script 
 ==================
 Autompeg is an automation script for the multimedia framework **FFmpeg** to convert all files with a specific file format (e.g. TS or OGG) into another file format (e.g. MP4 or MP3).
-Since FFmpeg doesn't provide an official way to convert multiple files, Autompeg is able to look through entire folders or even whole dictionaries / disks and convert them by its own.
+Since FFmpeg doesn't provide an official way to convert multiple files, Autompeg is able to go through entire folders or even whole disks and convert them by its own.
 
 --------------------------------
-I made this script to get rid of the typing of the same arguments in FFmpeg again and again - especially when you need to convert hundreds of files.
-Also Autompeg helps me to identify and convert files in confusingly dictionaries and disks.
+When you work on your daily tasks with your favorite application, you'll ask yourself "Why do I need to type the same command over and over again, when there is always just one small change?"
+As I already knew Python and also worked my way through "Automate the Boring Stuff with Python", I wanted to apply those learned skills into a real, very first project, that helps me to automate a daily task.
+
+I use FFmpeg to convert and compress a lot of files, they're mostly stored in the same directory for further action. So I want to get rid of typing (or let's say dragging the file into my terminal)
+and just enter the file path and which file format should be converted into another one.
+ -> PSEUDOCODE: search file path E:/ for file format 'x' if existing convert it to 'y' else skip
+ 
+  
+The biggest challenge was to understand how file paths were recognized by Python, FFmpeg and different OS such as Windows or Mac OSX.
+Down below, I wrote the known and commong problems, when entering a file path, that couldn't be handled due to slashes/backslashes.
 
 # Installation
 

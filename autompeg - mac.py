@@ -17,9 +17,8 @@ config = ConfigParser(allow_no_value=True)
 
 try:
     with open('config.ini', 'r') as cfg:
-        config.readfp(cfg)
-        config.get('ffmpeg', 'path2')
-        path = config.get('ffmpeg', 'path2')
+        config.read_file(cfg)
+        path = config.get('Path of ffmpeg', 'path')
 except IOError:
     print("Couldn't find or open configuration file for ffmpeg. Process is exiting now..")
     sys.exit()

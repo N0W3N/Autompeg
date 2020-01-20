@@ -7,7 +7,6 @@ from configparser import ConfigParser
 
 # working dir and extension types will be passed through CLI
 
-
 workDir = sys.argv[1]
 extType = sys.argv[2]
 newExtType = sys.argv[3]
@@ -18,10 +17,8 @@ config = ConfigParser(allow_no_value=True)
 
 try:
     with open('config.ini', 'r') as cfg:
-        #config.readfp(cfg)
         config.read_file(cfg)
-        config.get('ffmpeg', 'path2')
-        path = config.get('ffmpeg', 'path2')
+        path = config.get('Path of ffmpeg', 'path')
 except IOError:
     print("Couldn't find or open configuration file for ffmpeg. Process is exiting now..")
     sys.exit()
