@@ -23,7 +23,6 @@ except IOError:
     print("Couldn't find or open configuration file for ffmpeg. Process is exiting now..")
     sys.exit()
 
-
 # exception-clause to prevent a faulty WorkDir and therefore the following ffmpeg process
 
 try:
@@ -32,23 +31,28 @@ except IOError:
     print("Filepath not found. Please check the location of your media file(s).\n")
 else:
     for file in filesInWorkDir:
-        if str(file).split(".")[-1] == extType:  # scan for files with the extension given in 'extType'
-            newFile = str(file).split("." + extType)[0] + newExtType  # replace the extension with 'newExtType'
-            filepath = workDir + "\\" + file
-            newfilepath = workDir + "\\" + newFile
+        if sys.platform.startswith('win32'):
+            newfilename = str(file.split(".") + extType[0] + newExtType)
+            slash = "\\"
+        elif sys.platform.startswith('darwin'):
+            newfilename = str(file.split(extType)[0] + newExtType)
+            slash = "//"
+            if str(file).split(".")[-1] == extType:  # scan for files with the extension given in 'extType'
+                filepath = workDir + slash + file
+                newfilepath = workDir + slash + newfilename
 
-            # no need to include an exception-clause here yet, since ffmpeg automatically detects a faulty filepath
+                # no need to include an exception-clause here yet, since ffmpeg automatically detects a faulty filepath
 
-            subprocess.call(
-                [
+                subprocess.run(
+                    [
 
-                    path,  # path of ffmpeg
-                    "-i",  # input argument for file
-                    filepath,  # file path of the 'old' media file
-                    "-c:v",  # select video stream
-                    "copy",  # copy video stream and don't convert it (to prevent quality loss)
-                    "-bsf:a",  # select bitstream filter for the audio stream
-                    "aac_adtstoasc",  # remove the ADTS header from the audio stream
-                    newfilepath,  # file path of the 'new' media file
-                ]
-            )
+                        path,  # path of ffmpeg
+                        "-i",  # input argument for file
+                        filepath,  # file path of the 'old' media file
+                        "-c:v",  # select video stream
+                        "copy",  # copy video stream and don't convert it (to prevent quality loss)
+                        "-bsf:a",  # select bitstream filter for the audio stream
+                        "aac_adtstoasc",  # remove the ADTS header from the audio stream
+                        newfilepath,  # file path of the 'new' media file
+                    ]
+                )
