@@ -1,19 +1,35 @@
 Autompeg - ffmpeg automation script 
 ==================
-Autompeg is an automation script for the multimedia framework **FFmpeg** to convert all files with a specific file format (e.g. TS or OGG) into another file format (e.g. MP4 or MP3).
-Since FFmpeg doesn't provide an official way to convert multiple files, Autompeg is able to go through entire folders or even whole disks and convert them by its own.
+Autompeg is an automation script for the multimedia framework **FFmpeg** to convert all files with a specific file format
+(e.g. TS or OGG) into another file format (e.g. MP4 or MP3).
+Since FFmpeg doesn't provide an official way to convert multiple files, Autompeg is able to go through entire folders or
+even whole disks and convert them by its own.
+
+**Autompeg** is an automation script for the multimedia framework **FFmpeg**.
+It converts files with a specific file format into another file format (e.g. from .ts to .mp4 | from .wav to .mp3).
+Unfortunately, FFmpeg doesn't provide an official way to convert multiple files stored in a folder on a disk in a single process.
+Autompeg is a simple extension to the framework, making it possible to just enter a working-directory and the file extension
+it should be working with.
 
 --------------------------------
-When you work on your daily tasks with your favorite application, you'll ask yourself "Why do I need to type the same command over and over again, when there is always just one small change?"
-As I already knew Python and also worked my way through "Automate the Boring Stuff with Python", I wanted to apply those learned skills into a real, very first project, that helps me to automate a daily task.
+# Thoughts behind this project
 
-I use FFmpeg to convert and compress a lot of files, they're mostly stored in the same directory for further action. So I want to get rid of typing (or let's say dragging the file into my terminal)
+When you work on your daily tasks with your favorite application, you'll ask yourself 
+"Why do I need to type the same command over and over again, when there is always just one small change?"
+As I already knew Python and also worked my way through "Automate the Boring Stuff with Python", 
+I wanted to apply those learned skills into a real, very first project, that helps me to automate a daily task.
+
+I use FFmpeg to convert and compress a lot of files, they're mostly stored in the same directory for further action. 
+So I want to get rid of typing (or let's say dragging the file into my terminal)
 and just enter the file path and which file format should be converted into another one.
- -> PSEUDOCODE: search file path E:/ for file format 'x' if existing convert it to 'y' else skip
+
+ -> PSEUDOCODE: 
+ search file path E:/ for file format 'x' 
+    if existing convert it to 'y' 
+    else skip
  
   
 The biggest challenge was to understand how file paths were recognized by Python, FFmpeg and different OS such as Windows or Mac OSX.
-Down below, I wrote the known and commong problems, when entering a file path, that couldn't be handled due to slashes/backslashes.
 
 # Installation
 
@@ -45,9 +61,9 @@ e.g. `python autompeg.py E:\Streams\ MOV MP4`
 
 e.g  `python autompeg.py E:\Music\ OGG MP3`
 
-* subprocess.call() takes all the arguments you'd type in your terminal/cmd to start ffmpeg
+* subprocess.run() takes all the arguments you'd type in your terminal/cmd to start ffmpeg
 
-* the example subprocess converts a transport stream (TS) without quality-loss (-c:v) (copy) to MP4 and also removes faulty audio streams (-bsf:a) (aac_adtstoasc).
+* the example subprocess in the code converts a transport stream (TS) without quality-loss (-c:v) (copy) to MP4 and also removes faulty audio streams (-bsf:a) (aac_adtstoasc).
 --------------------------------
 # Known bugs/issues
 

@@ -7,9 +7,12 @@ from configparser import ConfigParser
 
 # working dir and extension types will be passed through CLI
 
-workDir = sys.argv[1]
-extType = sys.argv[2]
-newExtType = sys.argv[3]
+try:
+    workDir = sys.argv[1]
+    extType = sys.argv[2]
+    newExtType = sys.argv[3]
+except IndexError:
+    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>")
 
 # Config Parser
 
