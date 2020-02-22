@@ -40,22 +40,21 @@ else:
         elif sys.platform.startswith('darwin'):
             newfilename = str(file.split(extType)[0] + newExtType)
             slash = "//"
-            if str(file).split(".")[-1] == extType:  # scan for files with the extension given in 'extType'
+            if file.endswith(extType):  # scan for files with the extension given in 'extType'
                 filepath = workDir + slash + file
                 newfilepath = workDir + slash + newfilename
 
                 # no need to include an exception-clause here yet, since ffmpeg automatically detects a faulty filepath
 
                 subprocess.run(
-                    [
-
-                        path,  # path of ffmpeg
-                        "-i",  # input argument for file
-                        filepath,  # file path of the 'old' media file
-                        "-c:v",  # select video stream
-                        "copy",  # copy video stream and don't convert it (to prevent quality loss)
-                        "-bsf:a",  # select bitstream filter for the audio stream
-                        "aac_adtstoasc",  # remove the ADTS header from the audio stream
-                        newfilepath,  # file path of the 'new' media file
-                    ]
-                )
+                        [
+                            path,  # path of ffmpeg
+                            "-i",  # input argument for file
+                            filepath,  # file path of the 'old' media file
+                            "-c:v",  # select video stream
+                            "copy",  # copy video stream and don't convert it (to prevent quality loss)
+                            "-bsf:a",  # select bitstream filter for the audio stream
+                            "aac_adtstoasc",  # remove the ADTS header from the audio stream
+                            newfilepath,  # file path of the 'new' media file
+                        ]
+                    )
