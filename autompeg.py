@@ -12,7 +12,8 @@ try:
     extType = sys.argv[2]
     newExtType = sys.argv[3]
 except IndexError:
-    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>")
+    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>\n"
+                    "e.g. python3 autompeg.py /Volumes/Volume1/Work ts mp4")
 
 # Config Parser
 
