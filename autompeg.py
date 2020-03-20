@@ -38,10 +38,12 @@ for root, directories, filenames in os.walk(workDir):
         filename = os.path.join(root, filename)
 
         if sys.platform.startswith('win32'):
-            newfilename = str(filename.split(".") + extType[0] + newExtType)
+            newfilename = os.path.splitext(filename[0]+newExtType)
+            #newfilename = str(filename.split(".") + extType[0] + newExtType)
             slash = "\\"
         elif sys.platform.startswith('darwin'):
-            newfilename = str(filename.split(extType)[0] + newExtType)
+            newfilename = os.path.splitext(filename[0]+newExtType)
+            #newfilename = str(filename.split(extType)[0] + newExtType)
             slash = "//"
             if filename.endswith(extType):  # scan for files with the extension given in 'extType'
                 filepath = filename
