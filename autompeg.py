@@ -12,7 +12,8 @@ try:
     extType = sys.argv[2]
     newExtType = sys.argv[3]
 except IndexError:
-    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>")
+    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>"
+                    "e.g. python3 autompeg.py /Volumes/Volume1/Work .ts .mp4")
 
 # Config Parser
 
@@ -38,11 +39,11 @@ for root, directories, filenames in os.walk(workDir):
         filename = os.path.join(root, filename)
 
         if sys.platform.startswith('win32'):
-            newfilename = os.path.splitext(filename[0]+newExtType)
+            newfilename = os.path.splitext(filename)[0] + newExtType
             #newfilename = str(filename.split(".") + extType[0] + newExtType)
             slash = "\\"
         elif sys.platform.startswith('darwin'):
-            newfilename = os.path.splitext(filename[0]+newExtType)
+            newfilename = os.path.splitext(filename)[0] + newExtType
             #newfilename = str(filename.split(extType)[0] + newExtType)
             slash = "//"
             if filename.endswith(extType):  # scan for files with the extension given in 'extType'
