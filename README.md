@@ -61,9 +61,9 @@ into another commands by your own choice.
 
 **Windows**
 
-e.g. `python3 autompeg.py E:\Streams\ MOV MP4`
+e.g. `python3 autompeg.py E:\\Streams\ .MOV .MP4`
 
-e.g  `python3 autompeg.py E:\Music\ OGG MP3`
+e.g  `python3 autompeg.py E:\\Music\\ OGG MP3`
 
 **Mac**
 
@@ -74,6 +74,8 @@ e.g. `python3 autompeg.py /Users/Test/Queue OGG MP3`
 * subprocess.run() works in the same way as your terminal does, with the only exception that it separates each command with a comma. 
 
 * the example subprocess in the code converts a transport stream (TS) without quality-loss (-c:v) (copy) to MP4 and also removes faulty audio streams (-bsf:a) (aac_adtstoasc).
+
+* Don't worry if you use the wrong slash syntax on Windows. Autompeg automatically replaces it with the correct slash-syntax.
 --------------------------------
 # Known bugs/issues
 
@@ -82,8 +84,6 @@ Please make sure to enter all paths correctly depending on your OS, otherwise Au
 
 Down below all bugs/issues which are currently known and will probably be fixed in the future.
 
-* (Windows) Autompeg couldn't find any files in `'E:/Media'` but was able to proceed with `'E:\Media'`
-* (Windows) Autompeg couldn't start FFmpeg when the location was set to `E:\FFmpeg\ffmpeg.exe` and/or `E:/FFmpeg/ffmpeg.exe`
 * (All) terminal/cmd isn't able to use the given argument if you haven't separate them correctly. subprocess needs all arguments within a new separated string/variable, it can't handle a single string with all arguments
 * (All) In rare cases FFmpeg couldn't start at all, when an old version is installed/used
 --------------------------------
