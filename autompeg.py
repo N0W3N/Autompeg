@@ -6,17 +6,6 @@ import sys
 from configparser import ConfigParser
 
 # working dir and extension types will be passed through CLI
-
-try:
-    workDir = sys.argv[1]
-    extType = sys.argv[2]
-    newExtType = sys.argv[3]
-
-except IndexError:
-    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>"
-                    "e.g. (Windows) python3 autompeg.py C:\\Users\\Test\\Work .ts .mp4"
-                    "e.g. (Mac) python3 autompeg.py /Volumes/Volume1/Work .ts .mp4")
-
 # Config Parser
 
 config = ConfigParser(allow_no_value=True)
@@ -31,7 +20,19 @@ except IOError:
 
 # exception-clause to prevent a faulty WorkDir and therefore the following ffmpeg process
 
+try:
+    workDir = sys.argv[1]
+    extType = sys.argv[2]
+    newExtType = sys.argv[3]
+
+except IndexError:
+    raise Exception("Usage: python3 autompeg.py <path to workfolder> <old fileformat> <new fileformat>"
+                    "e.g. (Windows) python3 autompeg.py C:\\Users\\Test\\Work .ts .mp4"
+                    "e.g. (Mac) python3 autompeg.py /Volumes/Volume1/Work .ts .mp4"
+                    "e.g. (Linux) python3 automopeg.py ~/Videos/Work .ts .mp4")
+
 if sys.platform.startswith('win32'):
+
     workDir = workDir.replace('/', '\\')
 else:
     pass
